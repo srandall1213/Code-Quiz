@@ -12,21 +12,67 @@
 
     <header>
         <p id="viewscores">View High Scores</p>
-        <p id="time">Time: 0:<span id="timer">60</span></p>
+        <p id="time">Time: <span id="timer">60</span> seconds</p>
     </header>
 
     <main>
 
-        <div class="pagebox">
-            <h1>Coding Quiz Challenge</h1>
-            <p>
-            Try to answer the following coding-related questions in 1 minute. If you answer incorrectly, 
-            15 seconds will be subtracted from the clock. When all the questions are answered or the timer 
-            reaches 0 then the game is over. Please save your score with your initials to gauge your progress 
-            compared to your peers.
-            </p>
-            <button id="startbtn">Start</button>
-        </div>
+        <div id="pageBox">
+            <div id="introText">
+                <h1>Coding Quiz Challenge</h1>
+                <p>
+                Try to answer the following five coding-related questions in 60 seconds. If you answer incorrectly, 
+                20 seconds will be taken off the clock. When all the questions are answered or the timer 
+                reaches 0 then the game is over. Please save your score with your initials to gauge your progress 
+                compared to your peers.
+                </p>
+                <button id="startBtn" class="btn">Start</button>
+            </div>
+            <div id="questionBox1" class="questionBoxStyle">
+                <h1 id="question1">Question 1</h1>
+                <div id="answerButtons1" class="btnGrid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>   
+                </div>     
+            </div>
+            <div id="questionBox2" class="questionBoxStyle">
+                <h1 id="question2">Question 2</h1>
+                <div id="answerButtons2" class="btnGrid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>   
+                </div>
+            </div>
+            <div id="questionBox3" class="questionBoxStyle">
+                <h1 id="question3">Question 3</h1>
+                <div id="answerButtons3" class="btnGrid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>   
+                </div>
+            </div>
+            <div id="questionBox4" class="questionBoxStyle">
+                <h1 id="question4">Question 4</h1>
+                <div id="answerButtons4" class="btnGrid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>   
+                </div>
+            </div>
+            <div id="questionBox5" class="questionBoxStyle">
+                <h1 id="question5">Question 5</h1>
+                <div id="answerButtons5" class="btnGrid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>   
+                </div>
+            </div>
         
     </main>
     <script src="./assets/JS/script.js"></script>

@@ -1,34 +1,62 @@
+:root {
+    --darkcyan: rgb(3, 80, 88)
+}
+
 header { 
     display: flex;
-    color: rgb(3, 80, 88);
+    color: var(--darkcyan);
     background-color: rgba(86, 230, 252, 0.185);
     margin: -8px;  
     justify-content: space-between; 
-    padding: 0px 10px;
+    padding: 1px 10px;
+    
 }
 
 #viewscores, #time {
     margin: 0px;
 }
 
-.pagebox {
+#pageBox {
+    border: 1px solid black;
+    box-shadow: 0 0 10px 3px;
+    margin: 150px 300px 0px;
+    padding: 0px 20px 15px;
+    
+}
+
+#introText {
     display: flex;
     align-items: center;
     text-align: center;
     flex-direction: column;
-    border: 1px solid black;
-    margin: 50px 300px;
-    padding: 20px;
 }
 
-#startbtn {
-    background-color: rgb(3, 80, 88);
+.btn {
+    background-color: var(--darkcyan);
     color: white;
     font-size: x-large;
     border-radius: 10px;
     padding: 5px 50px;
     margin: 20px;
 }
+
+.btn:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.btnGrid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+
+.questionBoxStyle {
+    display: none;
+    flex-direction: column;
+}
+
+/* media query on btn.Grid to become a column */
+
 
 
 
