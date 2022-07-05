@@ -1,14 +1,13 @@
 # Code-Quiz
 
+//Take time off clock for incorrect answers 
 
-<div class="allDone">
-    <h1>All done!</h1>
-    <p>Your final score is:<span id="score"></span></p>
-    <p>Enter initials: <input type="text" id="initials"></input><button id="submit">Submit</button></p>
-</div>
+//Add points to score for correct answers
 
-<div class="highScores">
-    <h1>High Scores</h1> 
-    <div id="highestScore"></div> <!-- div of 1. "ititials" + "-" + "score" -->
-    <button id="backBtn">Go Back</button><button id="clearScores">Clear High Scores</button>
-</div>
+//Store initials with score 
+
+//Display highest score 
+
+//Write in questions
+
+
