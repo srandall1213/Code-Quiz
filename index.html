@@ -12,7 +12,7 @@
 
     <header>
         <p id="viewscores">View High Scores</p>
-        <p id="time">Time: <span id="timer">60</span> seconds</p>
+        <p id="time">Time: <span id="timer">10</span> seconds</p>
     </header>
 
     <main>
@@ -21,8 +21,8 @@
             <div id="introText">
                 <h1>Coding Quiz Challenge</h1>
                 <p>
-                Try to answer the following five coding-related questions in 60 seconds. If you answer incorrectly, 
-                20 seconds will be taken off the clock. When all the questions are answered or the timer 
+                Try to answer the following five coding-related questions in 30 seconds. If you answer incorrectly, 
+                6 seconds will be taken off the clock. When all the questions are answered or the timer 
                 reaches 0 then the game is over. Please save your score with your initials to gauge your progress 
                 compared to your peers.
                 </p>
@@ -76,11 +76,13 @@
             <div id="recordInitials" class="hidden">
                 <h1>All done!</h1>
                 <span id="score"></span>
-                <p>Enter initials: <input type="text" id="initials"></input></p><button class="btn" id="submitBtn">Submit</button>
+                <label>Enter initials:</label><input type="text" id="initials"></input><br>
+                <button class="btn" id="submitBtn">Submit</button>
+                <p id="msg"></p>
             </div>
             <div id="highScoresBox" class="hidden">
                 <h1>High Scores</h1> 
-                <div id="highestScore"></div> <!-- div of 1. "ititials" + "-" + "score" -->
+                <div id="highestScore"></div>
                 <button class="btn" id="backBtn">Go Back</button>
                 <button class="btn" id="clearBtn">Clear High Scores</button>
             </div>

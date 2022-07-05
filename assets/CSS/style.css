@@ -55,6 +55,32 @@ header {
     flex-direction: column;
 }
 
+#recordInitials {
+    line-height: 40px;
+    text-align: center;
+    align-items: center;
+}
+
+#initials {
+    width: 18%;
+}
+
+#score, label {
+    font-size: larger;
+    font-weight: bold;
+}
+
+#submitBtn {
+    margin-top: -10px;
+}
+
+#msg {
+    font-weight: bold;
+    font-size: larger;
+    color: red;
+    margin-top: -10px;
+}
+
 /* media query on btn.Grid to become a column */
 
 

@@ -24,11 +24,13 @@ var quizScore = 0;
 var scoreEl = document.querySelector("#score");
 
 var recordInitialsBox = document.querySelector("#recordInitials");
-var submitBtn =document.querySelector("#submitBtn");
+var initialsEl = document.querySelector("#initials").value;
+var submitBtn = document.querySelector("#submitBtn");
+var msgEl = document.querySelector("#msg");
 
 var highScoresBox = document.querySelector("#highScoresBox");
-var highestScore = document.querySelector("#highestScore")
-var backBtn = document.querySelector("#backBtn")
+var highestScoreEl = document.querySelector("#highestScore");
+var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
 
@@ -38,15 +40,26 @@ startBtn.addEventListener("click", startQuiz);
 
 //Timer
 function countDown() {
-    var timeLeft = 60;
+    var timeLeft = 10;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
 
         if (timeLeft === 0) {
             clearInterval(timeInterval);
+            skiptoRecord ();
+            recordInitials ();
         }
     }, 1000);
+}
+
+//Used in Timer for when time runs out, the page skips to --> Show Score & Record Initials 
+function skiptoRecord() {
+    questionBox1.setAttribute("style", "display: none");
+    questionBox2.setAttribute("style", "display: none");
+    questionBox3.setAttribute("style", "display: none");
+    questionBox4.setAttribute("style", "display: none");
+    questionBox5.setAttribute("style", "display: none");
 }
 
 //Show Question 1
@@ -94,23 +107,31 @@ function question5() {
 //Select Correct Answer 5
 correct5.addEventListener("click", recordInitials, quizScore++);
 
-//Recorded Player Score
-
-//Show Score & Record Initials
+//Show Score
 function recordInitials () {
     questionBox5.setAttribute("style", "display: none");
     recordInitialsBox.setAttribute("style", "display: flex");
-    scoreEl.textContent = "Your Final Score: " + quizScore; 
+    scoreEl.textContent = "Your Final Score: " + quizScore;  
+    
 }
 
 //Stores Score and Initials 
-submitBtn.addEventListener("click", showHighScores);
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    if (initialsEl === "") {
+        msgEl.textContent = "Initials cannot be blank";
+    } else {
+        msgEl.textContent = "Success!"
+    }
+
+});
 
 //Show High Scores
 function showHighScores () {
     recordInitialsBox.setAttribute("style", "display: none");
     highScoresBox.setAttribute("style", "display: flex");
-    highestScore.textContent = "Enter Highest Stored Score Function Here";
+    highestScoreEl.textContent = initialsEl + " - " + quizScore;
 }
 
 //Go Back Button
@@ -127,7 +148,7 @@ clearBtn.addEventListener("click",  );
 
 //Clears All Stored Scores
 function clearScores () {
-    highestScore.textContent = "Clear All Stored Scores Function Here"
+    highestScoreEl.textContent = "Clear All Stored Scores Function Here"
 }
 
 
