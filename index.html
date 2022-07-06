@@ -12,7 +12,7 @@
 
     <header>
         <p id="viewscores">View High Scores</p>
-        <p id="time">Time: <span id="timer">10</span> seconds</p>
+        <p id="time">Time: <span id="timer">60</span> seconds</p>
     </header>
 
     <main>
@@ -32,51 +32,51 @@
                 <h1 id="question1">My First Question</h1>
                 <div id="answerButtons1" class="btnGrid">
                     <button class="btn" id="correct1">CORRECT</button>
-                    <button class="btn">What's up</button>
-                    <button class="btn">How's it going</button>
-                    <button class="btn">Nice to see you</button>   
+                    <button class="btn" class="wrong">What's up</button>
+                    <button class="btn" class="wrong">How's it going</button>
+                    <button class="btn" class="wrong">Nice to see you</button>   
                 </div>     
             </div>
             <div id="questionBox2" class="hidden">
                 <h1 id="question2">My Second Question</h1>
                 <div id="answerButtons2" class="btnGrid">
-                    <button class="btn">Goodbye</button>
-                    <button class="btn">See ya</button>
+                    <button class="btn" class="wrong">Goodbye</button>
+                    <button class="btn" class="wrong">See ya</button>
                     <button class="btn" id="correct2">CORRECT</button>
-                    <button class="btn">Alligator</button>   
+                    <button class="btn" class="wrong">Alligator</button>   
                 </div>
             </div>
             <div id="questionBox3" class="hidden">
                 <h1 id="question3">My Third Question</h1>
                 <div id="answerButtons3" class="btnGrid">
-                    <button class="btn">Good Morning</button>
+                    <button class="btn" class="wrong">Good Morning</button>
                     <button class="btn" id="correct3">CORRECT</button>
-                    <button class="btn">Good Evening</button>
-                    <button class="btn">Good Night</button>   
+                    <button class="btn" class="wrong">Good Evening</button>
+                    <button class="btn" class="wrong">Good Night</button>   
                 </div>
             </div>
             <div id="questionBox4" class="hidden">
                 <h1 id="question4">My Fourth Question</h1>
                 <div id="answerButtons4" class="btnGrid">
-                    <button class="btn">Sunny</button>
-                    <button class="btn">Cloudy</button>
-                    <button class="btn" id="correct4">CORRECT</button>
-                    <button class="btn">Snowy</button>   
+                    <button class="btn" class="wrong">Sunny</button>
+                    <button class="btn" class="wrong">Cloudy</button>
+                    <button class="btn" class="wrong">Rainy</button>
+                    <button class="btn" id="correct4">CORRECT</button>   
                 </div>
             </div>
             <div id="questionBox5" class="hidden">
                 <h1 id="question5">My Fifth Question</h1>
                 <div id="answerButtons5" class="btnGrid">
-                    <button class="btn">Monday</button>
+                    <button class="btn" class="wrong">Monday</button>
                     <button class="btn" id="correct5">CORRECT</button>
-                    <button class="btn">Wednesday</button>
-                    <button class="btn">Thursday</button>   
+                    <button class="btn" class="wrong">Wednesday</button>
+                    <button class="btn" class="wrong">Thursday</button>   
                 </div>
             </div>
             <div id="recordInitials" class="hidden">
                 <h1>All done!</h1>
                 <span id="score"></span>
-                <label>Enter initials:</label><input type="text" id="initials"></input><br>
+                <label>Enter initials:</label><input type="text" id="initialsInput"></input><br>
                 <button class="btn" id="submitBtn">Submit</button>
                 <p id="msg"></p>
             </div>

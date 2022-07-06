@@ -8,19 +8,20 @@
 
 //Write in questions
 
-//Figure out how to make it not record points for all the correct answers when time runs out
+//Figure out how to make it not record points for all the wrong answers when time runs out
 
 //Fix Clear Btn
 
 //How to keep the Record Initials page in place if there while timer runs out
 
-<!-- submitBtn.addEventListener("click", function () {
-        if (initialsEl = "") {
+//How to stop the timer when the last question is asked
+
+
+
+
+if (initialsInputEl === "") {
             msgEl.textContent = "Initials cannot be blank";
         } else {
-            msgEl.textContent = "Score Recorded"
-            submitBtn.addEventListener("click", showHighScores)
+            msgEl.textContent = "Success";
         }
-    })  -->
-
-
+    })

@@ -19,12 +19,14 @@ var correct2 = document.querySelector("#correct2");
 var correct3 = document.querySelector("#correct3");
 var correct4 = document.querySelector("#correct4");
 var correct5 = document.querySelector("#correct5");
+var wrongAnswer = document.getElementsByClassName('wrong');
 
 var quizScore = 0;
 var scoreEl = document.querySelector("#score");
 
+initialsInputEl = localStorage.getItem('initialsInput')
 var recordInitialsBox = document.querySelector("#recordInitials");
-var initialsEl = document.querySelector("#initials")
+var initialsInputEl = document.getElementById('initialsInput').value;
 var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
 
@@ -40,7 +42,7 @@ startBtn.addEventListener("click", startQuiz);
 
 //Timer
 function countDown() {
-    var timeLeft = 10;
+    var timeLeft = 60;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
@@ -62,15 +64,14 @@ function skiptoRecord() {
     questionBox5.setAttribute("style", "display: none");
     recordInitialsBox.setAttribute("style", "display: none");
     highScoresBox.setAttribute("style", "display: none");
-    
-
 }
 
 //Show Question 1
 function startQuiz() {
     introTextEl.setAttribute("style", "display: none");
     questionBox1.setAttribute("style", "display: flex"); 
-    correct1.addEventListener("click", question2, quizScore++); //Select Correct Answer 1 
+    correct1.addEventListener("click", question2, quizScore++) || //Select Correct Answer 1 
+    wrongAnswer.addEventListener("click", question2, timeLeft--);
 }
 
 //Show Question 2
@@ -105,15 +106,18 @@ function question5() {
 function recordInitials () {
     questionBox5.setAttribute("style", "display: none");
     recordInitialsBox.setAttribute("style", "display: flex");
-    scoreEl.textContent = "Your Final Score: " + quizScore;  
-    submitBtn.addEventListener("click", showHighScores)
+    scoreEl.textContent = "Your Final Score: " + quizScore; 
+    submitBtn.addEventListener("click", showHighScores); 
 }
 
 //Show High Scores
 function showHighScores () {
     recordInitialsBox.setAttribute("style", "display: none");
     highScoresBox.setAttribute("style", "display: flex");
-    highestScoreEl.textContent = "someFunctionHere" + " - " + quizScore;
+    initialsInputEl = localStorage.getItem('initialsInput');
+    localStorage.setItem("Initials", initialsInputEl);
+    localStorage.setItem("Score", quizScore);
+    highestScoreEl.textContent = initialsInputEl + " - " + quizScore;
 }
 
 //Go Back Button
@@ -126,7 +130,7 @@ function startBeginning () {
 }
 
 //Clear Button
-clearBtn.addEventListener("click",  );
+clearBtn.addEventListener("click", clearScores);
 
 //Clears All Stored Scores
 function clearScores () {
