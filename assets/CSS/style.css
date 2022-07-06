@@ -82,7 +82,17 @@ header {
 }
 
 
-/* media query on btn.Grid to become a column */
+@media screen and (max-width: 1145px) {
+    .btnGrid {
+      display: table-column;
+      flex-wrap: wrap;
+    }
+    .btn {
+        width: 90%;
+    }
+  }
+
+
 
 
 

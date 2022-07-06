@@ -42,7 +42,7 @@ startBtn.addEventListener("click", startQuiz);
 
 //Timer
 function countDown() {
-    var timeLeft = 60;
+    var timeLeft = 120;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
@@ -113,9 +113,8 @@ function recordInitials () {
 function showHighScores () {
     recordInitialsBox.setAttribute("style", "display: none");
     highScoresBox.setAttribute("style", "display: flex");
-    console.log(initialsInputEl);
-    initialsInputEl.value = localStorage.getItem('initialsInput');
-    localStorage.setItem("Initials", initialsInputEl.value);
+    initialsInputEl = localStorage.getItem('initialsInput');
+    localStorage.setItem("Initials", initialsInputEl); //WHY IS THIS SHOWING UP NULL????
     localStorage.setItem("Score", quizScore);
     highestScoreEl.textContent = initialsInputEl + " - " + quizScore;
 }
