@@ -55,7 +55,7 @@ header {
     flex-direction: column;
 }
 
-#recordInitials {
+#enterInitials {
     line-height: 40px;
     text-align: center;
     align-items: center;
@@ -85,7 +85,6 @@ header {
 @media screen and (max-width: 1145px) {
     .btnGrid {
       display: table-column;
-      flex-wrap: wrap;
     }
     .btn {
         width: 90%;
