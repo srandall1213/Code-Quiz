@@ -1,20 +1,25 @@
 :root {
-    --darkcyan: rgb(3, 80, 88)
+    --darkcyan: rgb(3, 80, 88);
+    --lightcyan: rgba(86, 230, 252, 0.185);
 }
 
 header { 
     display: flex;
     color: var(--darkcyan);
-    background-color: rgba(86, 230, 252, 0.185);
-    margin: -8px;  
+    background-color: var(--lightcyan);
+    margin: -9px;  
     justify-content: space-between; 
-    padding: 1px 10px;
-    
+    padding: 1px 10px; 
 }
 
-#viewscores, #time {
-    margin: 0px;
+#time {
+   margin: 0;
 }
+
+#viewHighScores:hover {
+    cursor: pointer;
+}
+
 
 #pageBox {
     border: 1px solid black;
@@ -55,7 +60,7 @@ header {
     flex-direction: column;
 }
 
-#enterInitials {
+#enterInitialsBox {
     line-height: 40px;
     text-align: center;
     align-items: center;
@@ -81,6 +86,14 @@ header {
     margin-top: -10px;
 }
 
+#yourScore {
+    background-color: var(--lightcyan);
+    color: var(--darkcyan);
+    padding-left: 4px;
+    font-size: larger;
+    margin-top: -5px;
+    
+}
 
 @media screen and (max-width: 1145px) {
     .btnGrid {

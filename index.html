@@ -11,11 +11,10 @@
 <body>
 
     <header>
-        <p id="viewscores">View High Scores</p>
-        <p id="time">Time: <span id="timer">10</span> seconds</p>
+        <p id="time">Time: <span id="timer">120</span> seconds</p>
     </header>
 
-    <main>
+    <main> 
 
         <div id="pageBox">
             <div id="introText">
@@ -32,7 +31,7 @@
                 <h1 id="question1">My First Question</h1>
                 <div id="answerButtons1" class="btnGrid">
                     <button class="btn" id="correct1">CORRECT</button>
-                    <button class="btn" class="wrong">What's up</button>
+                    <button class="btn" id="wrong1">What's up</button>
                     <button class="btn" class="wrong">How's it going</button>
                     <button class="btn" class="wrong">Nice to see you</button>   
                 </div>     
@@ -73,18 +72,18 @@
                     <button class="btn" class="wrong">Thursday</button>   
                 </div>
             </div>
-            <div id="enterInitials" class="hidden">
+            <div id="enterInitialsBox" class="hidden">
                 <h1>All done!</h1>
                 <span id="score"></span>
                 <label>Enter initials:</label><input type="text" id="initialsInput"></input><br>
                 <button class="btn" id="submitBtn">Submit</button>
                 <p id="msg"></p>
             </div>
-            <div id="highScoresBox" class="hidden">
-                <h1>High Scores</h1> 
-                <div id="highestScore"></div>
+            <div id="yourScoreBox" class="hidden">
+                <h1>Your Score</h1> 
+                <div id="yourScore"></div>
                 <button class="btn" id="backBtn">Go Back</button>
-                <button class="btn" id="clearBtn">Clear High Scores</button>
+                <button class="btn" id="clearBtn">Clear Score</button>
             </div>
     </main>
     <script src="./assets/JS/script.js"></script>

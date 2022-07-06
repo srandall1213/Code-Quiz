@@ -19,57 +19,64 @@ var correct2 = document.querySelector("#correct2");
 var correct3 = document.querySelector("#correct3");
 var correct4 = document.querySelector("#correct4");
 var correct5 = document.querySelector("#correct5");
-var wrongAnswer = document.getElementsByClassName('wrong'); /// FIGURE THIS OUT LATER
+var wrong1 = document.querySelector("#wrong1");
 
 var quizScore = 0;
 var scoreEl = document.querySelector("#score");
 
-var enterInitialsBox = document.querySelector("#enterInitials");
+var enterInitialsBox = document.querySelector("#enterInitialsBox");
 var initialsInputEl = document.querySelector("#initialsInput");
 var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
 
-var highScoresBox = document.querySelector("#highScoresBox");
-var highestScoreEl = document.querySelector("#highestScore");
+var yourScoreBox = document.querySelector("#yourScoreBox");
+var yourScoreEl = document.querySelector("#yourScore");
 var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
+//Timer
+
+function countDown() {
+    var timeLeft = 120;
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+
+        //Takes time off the clock for the wrong answer
+        wrong1.addEventListener("click", function () {
+            timerEl.textContent = timeLeft -= 5;
+        });
+
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+            skiptoEnter(); 
+            enterInitials (); 
+        };
+
+    }, 1000);
+}
 
 //Click Start to start timer & start quiz
 startBtn.addEventListener("click", countDown);
 startBtn.addEventListener("click", startQuiz);
 
-//Timer
-function countDown() {
-    var timeLeft = 11;
-    var timeInterval = setInterval(function () {
-        timeLeft--;
-        timerEl.textContent = timeLeft;
-
-        if (timeLeft === 0) {
-            clearInterval(timeInterval);
-            skiptoEnter();
-            enterInitials ();
-        }
-    }, 1000);
-}
-
 //Used in Timer for when time runs out, the page skips to --> Show Score & Enter Initials 
-function skiptoRecord() {
+function skiptoEnter() {
     questionBox1.setAttribute("style", "display: none");
     questionBox2.setAttribute("style", "display: none");
     questionBox3.setAttribute("style", "display: none");
     questionBox4.setAttribute("style", "display: none");
     questionBox5.setAttribute("style", "display: none");
-    recordInitialsBox.setAttribute("style", "display: none");
-    highScoresBox.setAttribute("style", "display: none");
+    enterInitialsBox.setAttribute("style", "display: none");
+    yourScoreBox.setAttribute("style", "display: none");
 }
 
 //Show Question 1
 function startQuiz() {
     introTextEl.setAttribute("style", "display: none");
     questionBox1.setAttribute("style", "display: flex"); 
-    correct1.addEventListener("click", question2, quizScore++) //Select Correct Answer 1 
+    correct1.addEventListener("click", question2, quizScore++); //Select Correct Answer 1
+    wrong1.addEventListener("click", question2, quizScore--); //Select Wrong Answer 1
 }
 
 //Show Question 2
@@ -100,12 +107,11 @@ function question5() {
     correct5.addEventListener("click", enterInitials, quizScore++); //Select Correct Answer 5
 }
 
-//Show Score
+//Show Score & Enter Initials
 function enterInitials () {
     questionBox5.setAttribute("style", "display: none");
     enterInitialsBox.setAttribute("style", "display: flex");
-    scoreEl.textContent = "Your Final Score: " + quizScore; 
-    
+    scoreEl.textContent = "Your Final Score: " + quizScore;   
 }
 
 //Submits Initials & Score to Local Storage
@@ -117,32 +123,38 @@ submitBtn.addEventListener("click", function(event) {
         score: quizScore,
     };
 
+    if (records.initials === "") {
+        msgEl.textContent = "Initials cannot be blank";
+        return;
+    } else {
+        msgEl.textContent = "Success";
+    }
+
     localStorage.setItem("records", JSON.stringify(records));
-    showHighScores();
+    showYourScore();
 }) 
 
 
 //Show High Scores
-function showHighScores () {
+function showYourScore () {
     enterInitialsBox.setAttribute("style", "display: none");
-    highScoresBox.setAttribute("style", "display: flex");
-    highestScoreEl.textContent = initialsInputEl.value + " - " + quizScore;
+    yourScoreBox.setAttribute("style", "display: flex");
+    yourScoreEl.textContent = initialsInputEl.value + " - " + quizScore;
 }
 
 //Back Button To Intro Page, Resets Score, Restarts Timer??
-backBtn.addEventListener("click", startBeginning, countDown);
+backBtn.addEventListener("click", startBeginning);
 
 function startBeginning () {
-    highScoresBox.setAttribute("style", "display: none");
-    introTextEl.setAttribute("style", "display: flex");
-    quizScore = 0;
+    yourScoreBox.setAttribute("style", "display: none");
+    introTextEl.setAttribute("style", "display: flex");   
 }
 
 //Clears All Stored Scores
 clearBtn.addEventListener("click", clearScores);
 
 function clearScores () {
-    highestScoreEl.textContent = ""
+    yourScoreEl.textContent = ""
     localStorage.clear()
 }
 
