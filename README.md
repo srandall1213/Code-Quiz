@@ -12,4 +12,15 @@
 
 //Fix Clear Btn
 
+//How to keep the Record Initials page in place if there while timer runs out
+
+<!-- submitBtn.addEventListener("click", function () {
+        if (initialsEl = "") {
+            msgEl.textContent = "Initials cannot be blank";
+        } else {
+            msgEl.textContent = "Score Recorded"
+            submitBtn.addEventListener("click", showHighScores)
+        }
+    })  -->
+
 

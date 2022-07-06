@@ -24,7 +24,7 @@ var quizScore = 0;
 var scoreEl = document.querySelector("#score");
 
 var recordInitialsBox = document.querySelector("#recordInitials");
-var initialsEl = document.querySelector("#initials").value;
+var initialsEl = document.querySelector("#initials")
 var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
 
@@ -60,78 +60,60 @@ function skiptoRecord() {
     questionBox3.setAttribute("style", "display: none");
     questionBox4.setAttribute("style", "display: none");
     questionBox5.setAttribute("style", "display: none");
+    recordInitialsBox.setAttribute("style", "display: none");
+    highScoresBox.setAttribute("style", "display: none");
+    
+
 }
 
 //Show Question 1
 function startQuiz() {
     introTextEl.setAttribute("style", "display: none");
     questionBox1.setAttribute("style", "display: flex"); 
+    correct1.addEventListener("click", question2, quizScore++); //Select Correct Answer 1 
 }
-
-//Select Correct Answer 1 
-correct1.addEventListener("click", question2, quizScore++);
 
 //Show Question 2
 function question2() {
     questionBox1.setAttribute("style", "display: none");
     questionBox2.setAttribute("style", "display: flex");
+    correct2.addEventListener("click", question3, quizScore++); //Select Correct Answer 2
 }
-
-//Select Correct Answer 2
-correct2.addEventListener("click", question3, quizScore++);
 
 //Show Question 3
 function question3() {
     questionBox2.setAttribute("style", "display: none");
     questionBox3.setAttribute("style", "display: flex");
+    correct3.addEventListener("click", question4, quizScore++); //Select Correct Answer 3
 }
-
-//Select Correct Answer 3
-correct3.addEventListener("click", question4, quizScore++);
 
 //Show Question 4
 function question4() {
     questionBox3.setAttribute("style", "display: none");
     questionBox4.setAttribute("style", "display: flex");
+    correct4.addEventListener("click", question5, quizScore++); //Select Correct Answer 4
 }
-
-//Select Correct Answer 4
-correct4.addEventListener("click", question5, quizScore++);
 
 //Show Question 5
 function question5() {
     questionBox4.setAttribute("style", "display: none");
     questionBox5.setAttribute("style", "display: flex");
+    correct5.addEventListener("click", recordInitials, quizScore++); //Select Correct Answer 5
 }
-
-//Select Correct Answer 5
-correct5.addEventListener("click", recordInitials, quizScore++);
 
 //Show Score
 function recordInitials () {
     questionBox5.setAttribute("style", "display: none");
     recordInitialsBox.setAttribute("style", "display: flex");
     scoreEl.textContent = "Your Final Score: " + quizScore;  
-    
+    submitBtn.addEventListener("click", showHighScores)
 }
-
-//Stores Score and Initials 
-submitBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-
-    if (initialsEl === "") {
-        msgEl.textContent = "Initials cannot be blank";
-    } else {
-        msgEl.textContent = "Success!"
-    }
-
-});
 
 //Show High Scores
 function showHighScores () {
     recordInitialsBox.setAttribute("style", "display: none");
     highScoresBox.setAttribute("style", "display: flex");
-    highestScoreEl.textContent = initialsEl + " - " + quizScore;
+    highestScoreEl.textContent = "someFunctionHere" + " - " + quizScore;
 }
 
 //Go Back Button
