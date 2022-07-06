@@ -24,7 +24,7 @@ var wrongAnswer = document.getElementsByClassName('wrong');
 var quizScore = 0;
 var scoreEl = document.querySelector("#score");
 
-initialsInputEl = localStorage.getItem('initialsInput')
+
 var recordInitialsBox = document.querySelector("#recordInitials");
 var initialsInputEl = document.getElementById('initialsInput').value;
 var submitBtn = document.querySelector("#submitBtn");
@@ -70,8 +70,7 @@ function skiptoRecord() {
 function startQuiz() {
     introTextEl.setAttribute("style", "display: none");
     questionBox1.setAttribute("style", "display: flex"); 
-    correct1.addEventListener("click", question2, quizScore++) || //Select Correct Answer 1 
-    wrongAnswer.addEventListener("click", question2, timeLeft--);
+    correct1.addEventListener("click", question2, quizScore++) //Select Correct Answer 1 
 }
 
 //Show Question 2
@@ -114,8 +113,9 @@ function recordInitials () {
 function showHighScores () {
     recordInitialsBox.setAttribute("style", "display: none");
     highScoresBox.setAttribute("style", "display: flex");
-    initialsInputEl = localStorage.getItem('initialsInput');
-    localStorage.setItem("Initials", initialsInputEl);
+    console.log(initialsInputEl);
+    initialsInputEl.value = localStorage.getItem('initialsInput');
+    localStorage.setItem("Initials", initialsInputEl.value);
     localStorage.setItem("Score", quizScore);
     highestScoreEl.textContent = initialsInputEl + " - " + quizScore;
 }
@@ -134,7 +134,8 @@ clearBtn.addEventListener("click", clearScores);
 
 //Clears All Stored Scores
 function clearScores () {
-    highestScoreEl.textContent = "Clear All Stored Scores Function Here"
+    highestScoreEl.textContent = ""
+    localStorage.clear()
 }
 
 
