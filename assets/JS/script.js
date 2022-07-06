@@ -37,14 +37,20 @@ var clearBtn = document.querySelector("#clearBtn");
 //Timer
 
 function countDown() {
-    var timeLeft = 120;
+    var timeLeft = 10;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
 
         //Takes time off the clock for the wrong answer
         wrong1.addEventListener("click", function () {
-            timerEl.textContent = timeLeft -= 5;
+            timerEl.textContent = timeLeft -= 5; 
+        });
+
+        //Stops timer after question 5 is answered 
+        correct5.addEventListener("click", function () {
+            clearInterval(timeInterval);
+            timerEl.textContent = 0;
         });
 
         if (timeLeft === 0) {
@@ -126,16 +132,14 @@ submitBtn.addEventListener("click", function(event) {
     if (records.initials === "") {
         msgEl.textContent = "Initials cannot be blank";
         return;
-    } else {
-        msgEl.textContent = "Success";
-    }
+    };
 
     localStorage.setItem("records", JSON.stringify(records));
     showYourScore();
 }) 
 
 
-//Show High Scores
+//Show Your Stored Score with Initials
 function showYourScore () {
     enterInitialsBox.setAttribute("style", "display: none");
     yourScoreBox.setAttribute("style", "display: flex");
@@ -156,6 +160,7 @@ clearBtn.addEventListener("click", clearScores);
 function clearScores () {
     yourScoreEl.textContent = ""
     localStorage.clear()
+    quizScore = 0;
 }
 
 
