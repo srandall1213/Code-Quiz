@@ -56,9 +56,6 @@ var yourScoreEl = document.querySelector("#yourScore");
 var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
- //WHERE SHOULD I PUT THISSSSSSSSSSS
-
-
 // START QUIZ
 
 //Click Start to start timer & Question 1
@@ -68,7 +65,7 @@ startBtn.addEventListener("click", question1);
 
 //Timer
 function countDown() {
-    var timeLeft = 60;
+    var timeLeft = 10;
     var timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = timeLeft;
@@ -92,7 +89,7 @@ function countDown() {
     }, 1000);
 }    
 
-var quizScore = 0;
+var quizScore = 0; //WHERE SHOULD I PUT THIS
 
 //Show Question 1
 function question1() {
@@ -177,12 +174,6 @@ function question5() {
 
     console.log(quizScore)
 }
-
-function clearTimer() {
-    clearInterval(timeInterval);
-    timerEl.textContent = 0;
-}
-
 
 //Show Score & Enter Initials // STOP COUNTDOWN HERE!!!!!
 function enterInitials () {
