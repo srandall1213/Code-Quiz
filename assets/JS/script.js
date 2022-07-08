@@ -1,6 +1,8 @@
 //Intro Page
 var startBtn = document.querySelector("#startBtn");
 var timerEl = document.querySelector("#timer");
+var timeLeft = 120;
+var timeInterval = null;
 var introBox = document.querySelector("#introBox");
 
 //Question Variables
@@ -15,7 +17,7 @@ var option4 = document.querySelector('#option4')
 var questions = [
     {
         title: "Q1. Which function allows you to set a timer?",
-        options: ["setTime()", "setInterval()","startInterval()", "setInterval()"],
+        options: ["setTime()", "timeInterval()","startInterval()", "setInterval()"],
         answer: "setInterval()"
     },
     {
@@ -64,29 +66,18 @@ startBtn.addEventListener("click", question1);
 
 //Timer
 function countDown() {
-    var timeLeft = 60;
-    var timeInterval = setInterval(function () {
-    timeLeft--;
+    timeInterval = setInterval(function () {
     timerEl.textContent = timeLeft;
-
-    //Takes time off the clock for the wrong answer - FIX THIS
-    // WHICHVARIABLEDOIPUTHERE.addEventListener("click", function () {
-    //     timerEl.textContent = timeLeft - 10; //time goes back up on the next question or -= takes more time off than needed
-    // });
-
-    // Stops timer after question 5 is answered - FIX THIS
-    // WHICHVARIABLEDOIPUTHERE.addEventListener("click", function () {
-    //     clearInterval(timeInterval);
-    //     timerEl.textContent = 0;
-    // });
+    timeLeft--;
 
     if (timeLeft === 0) {
+        timerEl.textContent = 0;
         clearInterval(timeInterval);
         enterInitials (); 
     };
 
     }, 1000);
-}    
+}  
 
 var quizScore = 0; //WHERE SHOULD I PUT THIS
 
@@ -100,46 +91,47 @@ function question1() {
     option2.innerText = questions[0].options[1];
     option3.innerText = questions[0].options[2];
     option4.innerText = questions[0].options[3];
-    
-    option1.addEventListener("click", question2, quizScore);
-    option2.addEventListener("click", question2, quizScore); 
-    option3.addEventListener("click", question2, quizScore); 
-    option4.addEventListener("click", question2, quizScore);  
-    
-    console.log(quizScore)
-}    
+        
+    option1.addEventListener("click", question2); 
+    option2.addEventListener("click", question2); 
+    option3.addEventListener("click", question2); 
+    option4.addEventListener("click", question2);
+
+}   
     
 // Show Question 2
 function question2() {
 
     question.innerText = questions[1].title
     option1.innerText = questions[1].options[0]
-    option2.innerText = questions[1].options[3]
-    option3.innerText = questions[1].options[1]
-    option4.innerText = questions[1].options[2]
+    option2.innerText = questions[1].options[1]
+    option3.innerText = questions[1].options[2]
+    option4.innerText = questions[1].options[3]
 
-    option1.addEventListener("click", question3, quizScore--); 
-    option2.addEventListener("click", question3, quizScore++); 
-    option3.addEventListener("click", question3, quizScore--); 
-    option4.addEventListener("click", question3, quizScore--); 
+    option1.addEventListener("click", question3); 
+    option2.addEventListener("click", question3); 
+    option3.addEventListener("click", question3); 
+    option4.addEventListener("click", question3); 
 
-    console.log(quizScore)
+    console.log(quizScore);
+    console.log(timeLeft);
 }
 
 //Show Question 3
 function question3() {
     question.innerText = questions[2].title
-    option1.innerText = questions[2].options[3]
-    option2.innerText = questions[2].options[0]
-    option3.innerText = questions[2].options[1]
-    option4.innerText = questions[2].options[2]
+    option1.innerText = questions[2].options[0]
+    option2.innerText = questions[2].options[1]
+    option3.innerText = questions[2].options[2]
+    option4.innerText = questions[2].options[3]
 
-    option1.addEventListener("click", question4, quizScore++); 
-    option2.addEventListener("click", question4, quizScore--); 
-    option3.addEventListener("click", question4, quizScore--); 
-    option4.addEventListener("click", question4, quizScore--);
+    option1.addEventListener("click", question4); 
+    option2.addEventListener("click", question4); 
+    option3.addEventListener("click", question4); 
+    option4.addEventListener("click", question4);
 
-    console.log(quizScore)
+    console.log(quizScore);
+    console.log(timeLeft);
 }
 
 //Show Question 4
@@ -147,37 +139,48 @@ function question4() {
     question.innerText = questions[3].title
     option1.innerText = questions[3].options[0]
     option2.innerText = questions[3].options[1]
-    option3.innerText = questions[3].options[3]
-    option4.innerText = questions[3].options[2]
+    option3.innerText = questions[3].options[2]
+    option4.innerText = questions[3].options[3]
 
-    option1.addEventListener("click", question5, quizScore--); 
-    option2.addEventListener("click", question5, quizScore--); 
-    option3.addEventListener("click", question5, quizScore++); 
-    option4.addEventListener("click", question5, quizScore--);
+    option1.addEventListener("click", question5); 
+    option2.addEventListener("click", question5); 
+    option3.addEventListener("click", question5); 
+    option4.addEventListener("click", question5);
 
-    console.log(quizScore)
+    console.log(quizScore);
+    console.log(timeLeft);
 }
 
 //Show Question 5
 function question5() {
+    
     question.innerText = questions[4].title
-    option1.innerText = questions[4].options[3]
-    option2.innerText = questions[4].options[0]
-    option3.innerText = questions[4].options[1]
-    option4.innerText = questions[4].options[2]
+    option1.innerText = questions[4].options[0]
+    option2.innerText = questions[4].options[1]
+    option3.innerText = questions[4].options[2]
+    option4.innerText = questions[4].options[3]
+    
+    option1.addEventListener("click", stopTimer);
+    option1.addEventListener("click", enterInitials);
+    option2.addEventListener("click", stopTimer);
+    option2.addEventListener("click", enterInitials); 
+    option3.addEventListener("click", stopTimer);
+    option3.addEventListener("click", enterInitials);
+    option4.addEventListener("click", stopTimer); 
+    option4.addEventListener("click", enterInitials);
 
-    option1.addEventListener("click", enterInitials, quizScore++); 
-    option2.addEventListener("click", enterInitials, quizScore--); 
-    option3.addEventListener("click", enterInitials, quizScore--); 
-    option4.addEventListener("click", enterInitials, quizScore--);
-
-    console.log(quizScore)
+    console.log(quizScore);
+    console.log(timeLeft);
 }
 
-// STOP COUNTDOWN HERE!!!!!
+//Stop Timer with click on Question 5
+function stopTimer() {
+    timerEl.textContent = 0;
+    clearInterval(timeInterval);
+} 
 
 //Show Score & Enter Initials 
-function enterInitials () {
+function enterInitials () { 
     questionBox.setAttribute("style", "display: none");
     enterInitialsBox.setAttribute("style", "display: flex");
     scoreEl.textContent = "Your Final Score: " + quizScore + "/10";  
@@ -213,6 +216,7 @@ backBtn.addEventListener("click", function () {
     yourScoreBox.setAttribute("style", "display: none");
     introBox.setAttribute("style", "display: flex");
 });
+
     
 //Clears All Stored Scores
 clearBtn.addEventListener("click", clearScores);
