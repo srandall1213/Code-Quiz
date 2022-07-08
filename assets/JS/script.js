@@ -62,10 +62,9 @@ var clearBtn = document.querySelector("#clearBtn");
 startBtn.addEventListener("click", countDown);
 startBtn.addEventListener("click", question1);
 
-
 //Timer
 function countDown() {
-    var timeLeft = 10;
+    var timeLeft = 60;
     var timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = timeLeft;
@@ -102,10 +101,10 @@ function question1() {
     option3.innerText = questions[0].options[2];
     option4.innerText = questions[0].options[3];
     
-    option1.addEventListener("click", question2, quizScore--);
-    option2.addEventListener("click", question2, quizScore--); 
-    option3.addEventListener("click", question2, quizScore--); 
-    option4.addEventListener("click", question2, quizScore++);  
+    option1.addEventListener("click", question2, quizScore);
+    option2.addEventListener("click", question2, quizScore); 
+    option3.addEventListener("click", question2, quizScore); 
+    option4.addEventListener("click", question2, quizScore);  
     
     console.log(quizScore)
 }    
@@ -175,7 +174,9 @@ function question5() {
     console.log(quizScore)
 }
 
-//Show Score & Enter Initials // STOP COUNTDOWN HERE!!!!!
+// STOP COUNTDOWN HERE!!!!!
+
+//Show Score & Enter Initials 
 function enterInitials () {
     questionBox.setAttribute("style", "display: none");
     enterInitialsBox.setAttribute("style", "display: flex");
