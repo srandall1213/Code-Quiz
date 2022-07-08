@@ -1,30 +1,19 @@
-// addEventListener to start button that will begin timer & displays question
-//answered correctly.. add bottom box border with "Correct!" move on
-//answered incorrectly.. add bottom box border with "Wrong!" & subtract time from timer
-//all questions answered or timer reaches 0.. game over
-//save initials and score 
-
 var startBtn = document.querySelector("#startBtn");
 var timerEl = document.querySelector("#timer");
-var introTextEl = document.querySelector("#introText");
+var introBox = document.querySelector("#introBox");
 
-var questionBox1 = document.querySelector("#questionBox1");
-var questionBox2 = document.querySelector("#questionBox2");
-var questionBox3 = document.querySelector("#questionBox3");
-var questionBox4 = document.querySelector("#questionBox4");
-var questionBox5 = document.querySelector("#questionBox5");
-
-var correct1 = document.querySelector("#correct1");
-var correct2 = document.querySelector("#correct2");
-var correct3 = document.querySelector("#correct3");
-var correct4 = document.querySelector("#correct4");
-var correct5 = document.querySelector("#correct5");
-var wrong1 = document.querySelector("#wrong1");
-
-var quizScore = 0;
-var scoreEl = document.querySelector("#score");
+var questionBox = document.querySelector("#questionBox");
+var question = document.querySelector('#question');
+var correct = document.querySelector('#correct')
+var wrong0 = document.querySelector('#wrong0')
+var wrong1 = document.querySelector('#wrong1')
+var wrong2 = document.querySelector('#wrong2')
+var questionsArr = ["First", "Second", "Third", "Fourth", "Fifth"];
+var correctArr = ["First Correct", "Second Correct", "Third Correct", "Fourth Correct", "Fifth Correct"];
+var wrongArr = ["Wrong 0", "Wrong 1", "Wrong 2"];
 
 var enterInitialsBox = document.querySelector("#enterInitialsBox");
+var scoreEl = document.querySelector("#score");
 var initialsInputEl = document.querySelector("#initialsInput");
 var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
@@ -34,135 +23,164 @@ var yourScoreEl = document.querySelector("#yourScore");
 var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
-//Timer
+//Click Start to start timer & start quiz
+startBtn.addEventListener("click", startQuiz);
 
-function countDown() {
-    var timeLeft = 10;
-    var timeInterval = setInterval(function () {
+//Starts Quiz
+function startQuiz() {
+var quizScore = 0;
+
+    //Timer
+    function countDown() {
+        var timeLeft = 10;
+        var timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft;
 
-        //Takes time off the clock for the wrong answer
-        wrong1.addEventListener("click", function () {
-            timerEl.textContent = timeLeft -= 5; 
+        //Takes time off the clock for the wrong answer FIX THISSSSSSSSSSSSS
+        wrong0.addEventListener("click", function () {
+            timerEl.textContent = timeLeft - 10; //time goes back up on the next question or -= takes more time off than needed
         });
 
-        //Stops timer after question 5 is answered 
-        correct5.addEventListener("click", function () {
+        // Stops timer after question 5 is answered FIX THISSSSSSSSSSSSS
+        correct.addEventListener("click", function () {
             clearInterval(timeInterval);
             timerEl.textContent = 0;
         });
 
         if (timeLeft === 0) {
             clearInterval(timeInterval);
-            skiptoEnter(); 
             enterInitials (); 
         };
 
-    }, 1000);
-}
+        }, 1000);
+    }
+    countDown();
 
-//Click Start to start timer & start quiz
-startBtn.addEventListener("click", countDown);
-startBtn.addEventListener("click", startQuiz);
+    //Show Question 1
+    function question1() {
+        introBox.setAttribute("style", "display: none");
+        questionBox.setAttribute("style", "display: flex"); 
+        
+        question.textContent = questionsArr[0];
+        correct.textContent = correctArr[0];
+        wrong0.textContent = wrongArr[0];
+        wrong1.textContent = wrongArr[1];
+        wrong2.textContent = wrongArr[2];
 
-//Used in Timer for when time runs out, the page skips to --> Show Score & Enter Initials 
-function skiptoEnter() {
-    questionBox1.setAttribute("style", "display: none");
-    questionBox2.setAttribute("style", "display: none");
-    questionBox3.setAttribute("style", "display: none");
-    questionBox4.setAttribute("style", "display: none");
-    questionBox5.setAttribute("style", "display: none");
-    enterInitialsBox.setAttribute("style", "display: none");
-    yourScoreBox.setAttribute("style", "display: none");
-}
+        correct.addEventListener("click", question2, quizScore++); //Select Correct Answer 
+        wrong0.addEventListener("click", question2, quizScore--); //Select Wrong Answer 
+        wrong1.addEventListener("click", question2, quizScore--); //Select Wrong Answer 
+        wrong2.addEventListener("click", question2, quizScore--); //Select Wrong Answer 
+    }
+    question1();
+    
+    //Show Question 2
+    function question2() {
+        question.textContent = questionsArr[1];
+        correct.textContent = correctArr[1];
+        wrong0.textContent = wrongArr[0]
+        wrong1.textContent = wrongArr[1];
+        wrong2.textContent = wrongArr[2];
 
-//Show Question 1
-function startQuiz() {
-    introTextEl.setAttribute("style", "display: none");
-    questionBox1.setAttribute("style", "display: flex"); 
-    correct1.addEventListener("click", question2, quizScore++); //Select Correct Answer 1
-    wrong1.addEventListener("click", question2, quizScore--); //Select Wrong Answer 1
-}
+        correct.addEventListener("click", question3, quizScore++); //Select Correct Answer
+        wrong0.addEventListener("click", question3, quizScore--); //Select Wrong Answer 
+        wrong1.addEventListener("click", question3, quizScore--); //Select Wrong Answer 
+        wrong2.addEventListener("click", question3, quizScore--); //Select Wrong Answer
+    }
+    question2();
+    
+    //Show Question 3
+    function question3() {
+        question.textContent = questionsArr[2];
+        correct.textContent = correctArr[2];
+        wrong0.textContent = wrongArr[0]
+        wrong1.textContent = wrongArr[1];
+        wrong2.textContent = wrongArr[2];
 
-//Show Question 2
-function question2() {
-    questionBox1.setAttribute("style", "display: none");
-    questionBox2.setAttribute("style", "display: flex");
-    correct2.addEventListener("click", question3, quizScore++); //Select Correct Answer 2
-}
+        correct.addEventListener("click", question4, quizScore++); //Select Correct Answer
+        wrong0.addEventListener("click", question4, quizScore--); //Select Wrong Answer 
+        wrong1.addEventListener("click", question4, quizScore--); //Select Wrong Answer 
+        wrong2.addEventListener("click", question4, quizScore--); //Select Wrong Answer
+    }
+    question3();
 
-//Show Question 3
-function question3() {
-    questionBox2.setAttribute("style", "display: none");
-    questionBox3.setAttribute("style", "display: flex");
-    correct3.addEventListener("click", question4, quizScore++); //Select Correct Answer 3
-}
+    //Show Question 4
+    function question4() {
+        question.textContent = questionsArr[3];
+        correct.textContent = correctArr[3];
+        wrong0.textContent = wrongArr[0]
+        wrong1.textContent = wrongArr[1];
+        wrong2.textContent = wrongArr[2];
 
-//Show Question 4
-function question4() {
-    questionBox3.setAttribute("style", "display: none");
-    questionBox4.setAttribute("style", "display: flex");
-    correct4.addEventListener("click", question5, quizScore++); //Select Correct Answer 4
-}
+        correct.addEventListener("click", question5, quizScore++); //Select Correct Answer
+        wrong0.addEventListener("click", question5, quizScore--); //Select Wrong Answer 
+        wrong1.addEventListener("click", question5, quizScore--); //Select Wrong Answer 
+        wrong2.addEventListener("click", question5, quizScore--); //Select Wrong Answer
+    }
+    question4();
 
-//Show Question 5
-function question5() {
-    questionBox4.setAttribute("style", "display: none");
-    questionBox5.setAttribute("style", "display: flex");
-    correct5.addEventListener("click", enterInitials, quizScore++); //Select Correct Answer 5
-}
+    //Show Question 5
+    function question5() {
+        question.textContent = questionsArr[4];
+        correct.textContent = correctArr[4];
+        wrong0.textContent = wrongArr[0]
+        wrong1.textContent = wrongArr[1];
+        wrong2.textContent = wrongArr[2];
 
-//Show Score & Enter Initials
-function enterInitials () {
-    questionBox5.setAttribute("style", "display: none");
-    enterInitialsBox.setAttribute("style", "display: flex");
-    scoreEl.textContent = "Your Final Score: " + quizScore;   
-}
+        correct.addEventListener("click", enterInitials, quizScore++); //Select Correct Answer
+        wrong0.addEventListener("click", enterInitials, quizScore--); //Select Wrong Answer 
+        wrong1.addEventListener("click", enterInitials, quizScore--); //Select Wrong Answer 
+        wrong2.addEventListener("click", enterInitials, quizScore--); //Select Wrong Answer
+        correct.addEventListener("click", enterInitials, quizScore++); //Select Correct Answer 5
+    }
+    question5();
 
-//Submits Initials & Score to Local Storage
-submitBtn.addEventListener("click", function(event) {
-    event.preventDefault();
+    //Show Score & Enter Initials
+    function enterInitials () {
+        questionBox.setAttribute("style", "display: none");
+        enterInitialsBox.setAttribute("style", "display: flex");
+        scoreEl.textContent = "Your Final Score: " + quizScore;   
+    }
 
-    var records = {
-        initials: initialsInputEl.value,
-        score: quizScore,
-    };
+    //Submits Initials & Score to Local Storage
+    submitBtn.addEventListener("click", function(event) {
+        event.preventDefault();
 
-    if (records.initials === "") {
-        msgEl.textContent = "Initials cannot be blank";
-        return;
-    };
+        var records = {
+            initials: initialsInputEl.value,
+            score: quizScore,
+        };
+
+        if (records.initials === "") {
+            msgEl.textContent = "Initials cannot be blank";
+            return;
+        };
 
     localStorage.setItem("records", JSON.stringify(records));
     showYourScore();
-}) 
+    });
 
 
-//Show Your Stored Score with Initials
-function showYourScore () {
-    enterInitialsBox.setAttribute("style", "display: none");
-    yourScoreBox.setAttribute("style", "display: flex");
-    yourScoreEl.textContent = initialsInputEl.value + " - " + quizScore;
+    //Show Your Stored Score with Initials
+    function showYourScore () {
+        enterInitialsBox.setAttribute("style", "display: none");
+        yourScoreBox.setAttribute("style", "display: flex");
+        yourScoreEl.textContent = initialsInputEl.value + " - " + quizScore;
+    }
 }
 
-//Back Button To Intro Page, Resets Score, Restarts Timer??
-backBtn.addEventListener("click", startBeginning);
-
-function startBeginning () {
-    yourScoreBox.setAttribute("style", "display: none");
-    introTextEl.setAttribute("style", "display: flex");   
-}
+//Back Button To Intro Page (keeps score)
+backBtn.addEventListener("click", startQuiz);
 
 //Clears All Stored Scores
 clearBtn.addEventListener("click", clearScores);
 
 function clearScores () {
-    yourScoreEl.textContent = ""
-    localStorage.clear()
+    yourScoreEl.textContent = "";
+    localStorage.clear();
     quizScore = 0;
 }
-
 
 
 
