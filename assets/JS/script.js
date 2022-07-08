@@ -1,9 +1,10 @@
-//Intro Page
+//Intro Page & Timer Variables
+var introBox = document.querySelector("#introBox");
 var startBtn = document.querySelector("#startBtn");
 var timerEl = document.querySelector("#timer");
-var timeLeft = 120;
+var timeLeft = 60;
 var timeInterval = null;
-var introBox = document.querySelector("#introBox");
+
 
 //Question Variables
 var questionBox = document.querySelector("#questionBox");
@@ -13,7 +14,7 @@ var option2 = document.querySelector('#option2')
 var option3 = document.querySelector('#option3')
 var option4 = document.querySelector('#option4')
                     
-//Question Content Variables
+//Question Content 
 var questions = [
     {
         title: "Q1. Which function allows you to set a timer?",
@@ -45,21 +46,19 @@ var questions = [
     },   
 ]                    
 
-//"Enter Initials" Box Variables
+//Score & Enter Initials Variables
+var quizScore = 0;
+var scoreEl = document.querySelector("#score"); 
 var enterInitialsBox = document.querySelector("#enterInitialsBox");
-var scoreEl = document.querySelector("#score");
 var initialsInputEl = document.querySelector("#initialsInput");
 var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
-
-//"Your Score" Box Variables
 var yourScoreBox = document.querySelector("#yourScoreBox");
 var yourScoreEl = document.querySelector("#yourScore");
-var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
-// START QUIZ
-
+//---------------------------------------START QUIZ----------------------------------------------//
+ 
 //Click Start to start timer & Question 1
 startBtn.addEventListener("click", countDown);
 startBtn.addEventListener("click", question1);
@@ -79,8 +78,6 @@ function countDown() {
     }, 1000);
 }  
 
-var quizScore = 0; //WHERE SHOULD I PUT THIS
-
 //Show Question 1
 function question1() {
     introBox.setAttribute("style", "display: none");
@@ -97,11 +94,13 @@ function question1() {
     option3.addEventListener("click", question2); 
     option4.addEventListener("click", question2);
 
+    console.log(quizScore);
+    console.log(timeLeft);
+
 }   
     
 // Show Question 2
 function question2() {
-
     question.innerText = questions[1].title
     option1.innerText = questions[1].options[0]
     option2.innerText = questions[1].options[1]
@@ -115,6 +114,7 @@ function question2() {
 
     console.log(quizScore);
     console.log(timeLeft);
+
 }
 
 //Show Question 3
@@ -132,6 +132,7 @@ function question3() {
 
     console.log(quizScore);
     console.log(timeLeft);
+
 }
 
 //Show Question 4
@@ -149,11 +150,11 @@ function question4() {
 
     console.log(quizScore);
     console.log(timeLeft);
+    
 }
 
 //Show Question 5
 function question5() {
-    
     question.innerText = questions[4].title
     option1.innerText = questions[4].options[0]
     option2.innerText = questions[4].options[1]
@@ -211,13 +212,6 @@ function showYourScore () {
     yourScoreEl.textContent = initialsInputEl.value + " - " + quizScore;
 }    
 
-//Back Button To Intro Page (keeps score)
-backBtn.addEventListener("click", function () {
-    yourScoreBox.setAttribute("style", "display: none");
-    introBox.setAttribute("style", "display: flex");
-});
-
-    
 //Clears All Stored Scores
 clearBtn.addEventListener("click", clearScores);
 
@@ -226,6 +220,9 @@ function clearScores () {
     localStorage.clear();
     quizScore = 0;
 }
+    
+
+
 
 
 
