@@ -35,6 +35,7 @@ header {
 }
 
 .btn {
+    flex-wrap: wrap;
     background-color: var(--darkcyan);
     color: white;
     font-size: x-large;
