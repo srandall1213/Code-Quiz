@@ -26,6 +26,7 @@ header {
     box-shadow: 0 0 10px 3px;
     margin: 150px 300px 0px;
     padding: 0px 20px 15px; 
+    min-width: 300px;
 }
 
 #introBox {
@@ -36,7 +37,7 @@ header {
 }
 
 .btn {
-    
+    text-align: center;
     justify-content: center;
     background-color: var(--darkcyan);
     color: white;
