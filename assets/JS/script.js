@@ -55,6 +55,7 @@ var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
 var yourScoreBox = document.querySelector("#yourScoreBox");
 var yourScoreEl = document.querySelector("#yourScore");
+var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
 //---------------------------------------START QUIZ----------------------------------------------//
@@ -78,6 +79,16 @@ function countDown() {
     }, 1000);
 }  
 
+//Removes time for incorrect selections
+function timeOff() {
+    timeLeft -= 10;
+}
+
+//Adds points to score for correct answers
+function addPoints() {
+    quizScore ++
+}
+
 //Show Question 1
 function question1() {
     introBox.setAttribute("style", "display: none");
@@ -87,79 +98,79 @@ function question1() {
     option1.innerText = questions[0].options[0];
     option2.innerText = questions[0].options[1];
     option3.innerText = questions[0].options[2];
-    option4.innerText = questions[0].options[3];
-        
-    option1.addEventListener("click", question2); 
+    option4.innerText = questions[0].answer;
+    
+    option1.addEventListener("click", timeOff);
+    option1.addEventListener("click", question2);
+    option2.addEventListener("click", timeOff);
     option2.addEventListener("click", question2); 
+    option3.addEventListener("click", timeOff);
     option3.addEventListener("click", question2); 
+    option4.addEventListener("click", addPoints);
     option4.addEventListener("click", question2);
-
-    console.log(quizScore);
-    console.log(timeLeft);
-
 }   
     
 // Show Question 2
 function question2() {
-    question.innerText = questions[1].title
-    option1.innerText = questions[1].options[0]
-    option2.innerText = questions[1].options[1]
-    option3.innerText = questions[1].options[2]
-    option4.innerText = questions[1].options[3]
+    question.innerText = questions[1].title;
+    option1.innerText = questions[1].options[0];
+    option2.innerText = questions[1].options[1];
+    option3.innerText = questions[1].options[2];
+    option4.innerText = questions[1].answer;
 
-    option1.addEventListener("click", question3); 
+    option1.addEventListener("click", timeOff);
+    option1.addEventListener("click", question3);
+    option2.addEventListener("click", timeOff);
     option2.addEventListener("click", question3); 
-    option3.addEventListener("click", question3); 
+    option3.addEventListener("click", timeOff);
+    option3.addEventListener("click", question3);
+    option4.addEventListener("click", addPoints); 
     option4.addEventListener("click", question3); 
-
-    console.log(quizScore);
-    console.log(timeLeft);
-
 }
 
 //Show Question 3
 function question3() {
-    question.innerText = questions[2].title
-    option1.innerText = questions[2].options[0]
-    option2.innerText = questions[2].options[1]
-    option3.innerText = questions[2].options[2]
-    option4.innerText = questions[2].options[3]
+    question.innerText = questions[2].title;
+    option1.innerText = questions[2].options[0];
+    option2.innerText = questions[2].options[1];
+    option3.innerText = questions[2].options[2];
+    option4.innerText = questions[2].answer;
 
-    option1.addEventListener("click", question4); 
+    option1.addEventListener("click", timeOff);
+    option1.addEventListener("click", question4);
+    option2.addEventListener("click", timeOff);
     option2.addEventListener("click", question4); 
-    option3.addEventListener("click", question4); 
+    option3.addEventListener("click", timeOff);
+    option3.addEventListener("click", question4);
+    option4.addEventListener("click", addPoints); 
     option4.addEventListener("click", question4);
-
-    console.log(quizScore);
-    console.log(timeLeft);
-
 }
 
 //Show Question 4
 function question4() {
-    question.innerText = questions[3].title
-    option1.innerText = questions[3].options[0]
-    option2.innerText = questions[3].options[1]
-    option3.innerText = questions[3].options[2]
-    option4.innerText = questions[3].options[3]
+    question.innerText = questions[3].title;
+    option1.innerText = questions[3].options[0];
+    option2.innerText = questions[3].options[1];
+    option3.innerText = questions[3].options[2];
+    option4.innerText = questions[3].answer;
 
-    option1.addEventListener("click", question5); 
+    option1.addEventListener("click", timeOff);
+    option1.addEventListener("click", question5);
+    option2.addEventListener("click", timeOff);
     option2.addEventListener("click", question5); 
-    option3.addEventListener("click", question5); 
-    option4.addEventListener("click", question5);
-
-    console.log(quizScore);
-    console.log(timeLeft);
-    
+    option3.addEventListener("click", timeOff);
+    option3.addEventListener("click", question5);
+    option4.addEventListener("click", addPoints); 
+    option4.addEventListener("click", question5);  
 }
 
 //Show Question 5
 function question5() {
-    question.innerText = questions[4].title
-    option1.innerText = questions[4].options[0]
-    option2.innerText = questions[4].options[1]
-    option3.innerText = questions[4].options[2]
-    option4.innerText = questions[4].options[3]
+    question.innerText = questions[4].title;
+    option1.innerText = questions[4].options[0];
+    option2.innerText = questions[4].options[1];
+    option3.innerText = questions[4].options[2];
+    option4.innerText = questions[4].answer;
     
     option1.addEventListener("click", stopTimer);
     option1.addEventListener("click", enterInitials);
@@ -168,10 +179,8 @@ function question5() {
     option3.addEventListener("click", stopTimer);
     option3.addEventListener("click", enterInitials);
     option4.addEventListener("click", stopTimer); 
+    option4.addEventListener("click", addPoints);
     option4.addEventListener("click", enterInitials);
-
-    console.log(quizScore);
-    console.log(timeLeft);
 }
 
 //Stop Timer with click on Question 5
@@ -184,7 +193,7 @@ function stopTimer() {
 function enterInitials () { 
     questionBox.setAttribute("style", "display: none");
     enterInitialsBox.setAttribute("style", "display: flex");
-    scoreEl.textContent = "Your Final Score: " + quizScore + "/10";  
+    scoreEl.textContent = "Your Final Score: " + quizScore;  
 }
 
 //Submits Initials & Score to Local Storage
@@ -209,7 +218,7 @@ showYourScore();
 function showYourScore () {
     enterInitialsBox.setAttribute("style", "display: none");
     yourScoreBox.setAttribute("style", "display: flex");
-    yourScoreEl.textContent = initialsInputEl.value + " - " + quizScore;
+    yourScoreEl.textContent = initialsInputEl.value + " - " + quizScore + "/5";
 }    
 
 //Clears All Stored Scores
@@ -220,6 +229,11 @@ function clearScores () {
     localStorage.clear();
     quizScore = 0;
 }
+
+//Back Button Reloads Page
+backBtn.addEventListener("click", function () {
+    location.reload()
+});
     
 
 
