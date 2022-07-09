@@ -55,8 +55,8 @@ var submitBtn = document.querySelector("#submitBtn");
 var msgEl = document.querySelector("#msg");
 var yourScoreBox = document.querySelector("#yourScoreBox");
 var yourScoreEl = document.querySelector("#yourScore");
-var backBtn = document.querySelector("#backBtn");
 var clearBtn = document.querySelector("#clearBtn");
+var backBtn = document.querySelector("#backBtn");
 
 //---------------------------------------START QUIZ----------------------------------------------//
  
@@ -183,7 +183,7 @@ function question5() {
     option4.addEventListener("click", enterInitials);
 }
 
-//Stop Timer with click on Question 5
+//Stop Timer with Click on Question 5
 function stopTimer() {
     timerEl.textContent = 0;
     clearInterval(timeInterval);
