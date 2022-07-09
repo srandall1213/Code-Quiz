@@ -12,7 +12,7 @@
 
 - I faced many challenges with this project. Getting the interval to stop at certain points was difficult. I eventually learned that setting my timeInterval = null in global allowed me to call on it later. I had a hard time making the time-off-for-incorrect-selections not compound on itself, and same with the scores. I became very aware of how much I don't know because my code is long and repetitive. I would love to learn more about how to simplify something like this. 
 
-- In the future, I would like to take some time to learn more about how to apply for loops to make my code more condensed. 
+- In the future, I would like to take some time to learn more about how to apply for loops to make my code more condensed. I would also like to fix my CSS to look it's best when resizing.
 
 ## Website Appearance
 
