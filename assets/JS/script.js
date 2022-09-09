@@ -22,8 +22,8 @@ var questions = [
         answer: "setInterval()"
     },
     {
-        title: "Q2. What is the term called that allows something to happen with a click?",
-        options: ["addListener", ".clickOn", ".onclick", ".addEventListener"],
+        title: "Q2. What is the function called that listens & fires arguments?",
+        options: ["addListener", "clickOn", "onclick", "addEventListener"],
         answer: ".addEventListener"
     },
     {
@@ -33,7 +33,7 @@ var questions = [
 
     },
     {
-        title: "Q.4 Which property allows you to save values in a web browser until with no expiration?",
+        title: "Q.4 Which property allows you to save values in a web browser with no expiration?",
         options: ["store", "browswerStorage", "sessionStorage", "localStorage"],
         answer: "localStorage"
 
